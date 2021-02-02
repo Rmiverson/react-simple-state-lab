@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Cell from './cell'
 
 export default class Matrix extends Component {
   
   genRow = (vals) => {
-    return vals.map(val => <div className="cell"></div>) // replace me and render a cell component instead!
+    return vals.map(val => <Cell value={val}/> ) // replace me and render a cell component instead!
   }
   
   genMatrix = () => {
@@ -18,4 +19,19 @@ export default class Matrix extends Component {
     )
   }
   
+}
+
+const defaultArray = () => {
+  const R = 10, C = 10
+  const val = '#F00'
+
+  let arr = Array(R)
+  for (let i = 0; i < R; i++) {
+    arr[i] = Array(C).fill(val)
+  }
+  return arr
+}
+
+Matrix.defaultProps = {
+  values: defaultArray()
 }
